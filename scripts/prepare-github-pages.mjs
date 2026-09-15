@@ -28,8 +28,9 @@ async function rewritePaths(directory) {
     const rewritten = source
       .replaceAll('"/_next/', `"${prefix}/_next/`)
       .replaceAll('"/akhil-gajula-profile.png', `"${prefix}/akhil-gajula-profile.png`)
-      .replaceAll('"/nurses-of-the-future-recognition.png', `"${prefix}/nurses-of-the-future-recognition.png`)
-      .replaceAll('"/favicon.svg', `"${prefix}/favicon.svg`)
+          .replaceAll('"/nurses-of-the-future-recognition.png', `"${prefix}/nurses-of-the-future-recognition.png`)
+          .replaceAll('"/akhil-gajula-resume.pdf', `"${prefix}/akhil-gajula-resume.pdf`)
+          .replaceAll('"/favicon.svg', `"${prefix}/favicon.svg`)
       .replaceAll('"/work/', `"${prefix}/work/`)
       .replaceAll('"/#', `"${prefix}/#`)
       .replaceAll('href="/"', `href="${prefix}/"`)
