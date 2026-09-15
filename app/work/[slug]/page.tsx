@@ -1,5 +1,41 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/projects';
-export function generateStaticParams() { return projects.map(({ slug }) => ({ slug })); }
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) { const { slug } = await params; const project = projects.find((item) => item.slug === slug); if (!project) notFound(); return <main className="case-study"><header className="case-nav"><Link href="/" className="wordmark">AKHIL<span>.</span></Link><Link href="/#work">← All work</Link></header><article><p className="eyebrow">{project.category} · {project.period}</p><h1>{project.title}</h1><p className="case-lede">{project.summary}</p><div className="case-meta"><div><span>My role</span><p>{project.role}</p></div><div><span>Outcome</span><p>{project.impact}</p></div></div><div className="case-content">{project.sections.map((section) => <section key={section.title}><h2>{section.title}</h2><p>{section.body}</p></section>)}</div><section className="case-stack"><h2>Technology used</h2><div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>{project.github && <a className="button primary" href={project.github} target="_blank" rel="noreferrer">View on GitHub ↗</a>}</section></article><footer><Link href="/#work">← Back to selected work</Link><a href="mailto:akhilgajula@gmail.com">Get in touch ↗</a></footer></main>; }
+
+export function generateStaticParams() {
+  return projects.map(({ slug }) => ({ slug }));
+}
+
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projects.find((item) => item.slug === slug);
+  if (!project) notFound();
+
+  return (
+    <main className="case-study">
+      <header className="case-nav">
+        <Link href="/" className="wordmark">AKHIL<span>.</span></Link>
+        <Link href="/#work">← All work</Link>
+      </header>
+      <article>
+        <p className="eyebrow">{project.category} · {project.period}</p>
+        <h1>{project.title}</h1>
+        <p className="case-lede">{project.summary}</p>
+        <div className="case-meta">
+          <div><span>My role</span><p>{project.role}</p></div>
+          <div><span>Outcome</span><p>{project.impact}</p></div>
+        </div>
+        <div className="case-content">
+          {project.sections.map((section) => <section key={section.title}><h2>{section.title}</h2><p>{section.body}</p></section>)}
+        </div>
+        <section className="case-stack">
+          <h2>Technology used</h2>
+          <div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
+          {project.liveUrl && <a className="button primary" href={project.liveUrl} target="_blank" rel="noreferrer">Visit live site ↗</a>}
+          {project.github && <a className="button" href={project.github} target="_blank" rel="noreferrer">View on GitHub ↗</a>}
+        </section>
+      </article>
+      <footer><Link href="/#work">← Back to selected work</Link><a href="mailto:akhilgajula@gmail.com">Get in touch ↗</a></footer>
+    </main>
+  );
+}

@@ -8,6 +8,8 @@ export type Project = {
   impact: string;
   stack: string[];
   github?: string;
+  liveUrl?: string;
+  liveLabel?: string;
   sections: { title: string; body: string }[];
   featured?: boolean;
 };
@@ -55,12 +57,30 @@ export const projects: Project[] = [
   {
     slug: 'necs-2026', title: 'NECS 2026: The Battle for Nashville', period: 'Sep 2025 — May 2026', category: 'Competition / UX engineering',
     summary: 'An interactive esports championship digital experience created for BPA User Experience Design.', role: 'UX designer & prototyper', impact: '1st place, Delaware BPA State Leadership Conference · 4th place, BPA National Leadership Conference.',
-    stack: ['Framer', 'Interactive prototyping', 'Accessibility Insights', 'Responsive design'],
+    stack: ['Framer', 'Interactive prototyping', 'Accessibility Insights', 'Responsive design'], liveUrl: 'https://necs26.framer.website/', liveLabel: 'NECS 2026 website',
     sections: [
       { title: 'Research', body: 'The project progressed from competitor analysis and information architecture into a design system, responsive prototypes, and accessibility validation.' },
       { title: 'Design decisions', body: 'The experience included event navigation, match, team, and game information; community features; ticketing concepts; interactive cards and popups; and an original Discord-inspired community interface.' },
       { title: 'Testing & iteration', body: 'Accessibility considerations were integrated into the work and evaluated with Accessibility Insights for Web. Mobile layouts were treated as a deliberate prototype, not a scaled-down desktop page.' },
       { title: 'Competition result', body: '1st place at Delaware BPA State Leadership Conference and 4th place at BPA National Leadership Conference. This was a competition project, not an official NECS website.' },
+    ],
+  },
+  {
+    slug: 'nurses-of-the-future', title: 'Nurses of the Future Website Redesign', period: 'May 2025 - Jul 2025', category: 'Website redesign / Accessibility',
+    summary: 'A website redesign that improves usability, accessibility, navigation, and information organization for a nonprofit supporting future healthcare leaders.', role: 'Media/Web Design Team contributor', impact: 'Recognized with a Certificate of Appreciation for contributions to the organization’s digital presence.',
+    stack: ['Figma', 'WordPress', 'WCAG', 'Responsive design'], liveUrl: 'https://nursesofthefuture.org/', liveLabel: 'Nurses of the Future website',
+    sections: [
+      { title: 'Overview', body: 'As part of the Media/Web Design Team, I contributed to a redesign focused on clearer navigation, usability, accessibility, and more organized information.' },
+      { title: 'Recognition', body: 'The organization recognized my dedication and contributions to the Media/Web Design Team with a Certificate of Appreciation in July 2025.' },
+    ],
+  },
+  {
+    slug: 'border-cafe', title: 'Border Cafe UX & Website Redesign', period: 'May 2025', category: 'Website redesign / UX',
+    summary: 'A restaurant website redesign that makes key information easier to find while preserving the brand’s character.', role: 'UX designer & prototyper', impact: 'Created a clearer, more modern interface with improved hierarchy, navigation, and usability.',
+    stack: ['Framer', 'UX design', 'Information architecture', 'Responsive design'], liveUrl: 'https://bordercafe.framer.website/', liveLabel: 'Border Cafe mockup',
+    sections: [
+      { title: 'Overview', body: 'I redesigned the Border Cafe website to create a cleaner, more modern interface while retaining the restaurant’s existing brand identity.' },
+      { title: 'Design focus', body: 'The work prioritized visual hierarchy, navigation, usability, and making essential customer information easier to find.' },
     ],
   },
   {
@@ -86,7 +106,7 @@ export const projects: Project[] = [
   {
     slug: 'brew-barn', title: 'The Brew Barn', period: 'Sep 2024 — May 2025', category: 'Competition / UX foundation',
     summary: 'A responsive coffee-shop digital experience demonstrating the UX foundation that informs my current software work.', role: 'UX designer & prototyper', impact: '1st place, Delaware BPA UX Design · 7th nationally at BPA NLC 2025.',
-    stack: ['Framer', 'Responsive design', 'Information architecture', 'Accessibility'],
+    stack: ['Framer', 'Responsive design', 'Information architecture', 'Accessibility'], liveUrl: 'https://thebrewbarncafe.framer.website/', liveLabel: 'The Brew Barn website',
     sections: [
       { title: 'Overview', body: 'The Brew Barn focused on menu browsing, merchandise, locations, brand storytelling, navigation, responsive behavior, usability, and accessibility.' },
       { title: 'What it shaped', body: 'This project reflects an earlier UX focus. The research and human-centered design habits developed here now strengthen the software and automation work I build.' },
