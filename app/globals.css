@@ -39,10 +39,10 @@ body,button,input,select,textarea { font-family:var(--font-geist-sans),Arial,Hel
 .skills-grid h3::before { content:''; flex:0 0 23px; width:23px; height:23px; background:center / contain no-repeat; }
 .skills-grid article:nth-child(1) h3::before { background-image:url('https://cdn.simpleicons.org/python/3776AB'); }
 .skills-grid article:nth-child(2) h3::before { background-image:url('https://cdn.simpleicons.org/react/149ECA'); }
-.skills-grid article:nth-child(3) h3::before { background-image:url('https://cdn.simpleicons.org/openai/111111'); }
-.skills-grid article:nth-child(4) h3::before { background-image:url('https://cdn.simpleicons.org/playwright/2EAD33'); }
+.skills-grid article:nth-child(3) h3::before,.skills-grid article:nth-child(4) h3::before { display:none; }
 .skills-grid article:nth-child(5) h3::before { background-image:url('https://cdn.simpleicons.org/cplusplus/00599C'); }
 .skills-grid article:nth-child(6) h3::before { background-image:url('https://cdn.simpleicons.org/figma/F24E1E'); }
+.skill-heading-icon { flex:0 0 23px; width:23px; height:23px; color:var(--green-dark); }
 .motion-ready [data-reveal].is-visible .project-card,.motion-ready [data-reveal].is-visible .impact-feature,.motion-ready [data-reveal].is-visible .recognition,.motion-ready [data-reveal].is-visible .leadership-grid article,.motion-ready [data-reveal].is-visible .certificate-card,.motion-ready [data-reveal].is-visible .skills-grid article { animation:card-rise .6s cubic-bezier(.2,.75,.2,1) both; }
 .motion-ready [data-reveal].is-visible .project-card:nth-child(2),.motion-ready [data-reveal].is-visible .leadership-grid article:nth-child(2),.motion-ready [data-reveal].is-visible .certificate-card:nth-child(2),.motion-ready [data-reveal].is-visible .skills-grid article:nth-child(2) { animation-delay:.08s; }
 .motion-ready [data-reveal].is-visible .project-card:nth-child(3),.motion-ready [data-reveal].is-visible .leadership-grid article:nth-child(3),.motion-ready [data-reveal].is-visible .skills-grid article:nth-child(3) { animation-delay:.16s; }
