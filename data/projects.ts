@@ -11,6 +11,13 @@ export type Project = {
   liveUrl?: string;
   liveLabel?: string;
   sections: { title: string; body: string }[];
+  caseStudy?: {
+    problem: string;
+    built: string;
+    architecture: string[];
+    challenges: string[];
+    gallery: string[];
+  };
   featured?: boolean;
 };
 
@@ -27,6 +34,13 @@ export const projects: Project[] = [
       { title: 'Technical challenge', body: 'A useful audit needs more than one score. The pipeline brings accessibility, performance, responsive behavior, and technical quality into one comparable system while retaining the evidence behind each finding.' },
       { title: 'Result', body: 'UXBench creates a more objective basis for evaluating and comparing websites.' },
     ],
+    caseStudy: {
+      problem: 'Website evaluation often relies on subjective claims. UXBench creates a standardized audit workflow that makes those claims easier to compare with evidence.',
+      built: 'I built the automated audit pipeline, scoring logic, and evidence-capture workflow described in the project.',
+      architecture: ['Website URL', 'Playwright across viewport sizes', 'Lighthouse + axe-core', 'Prioritized scores', 'Evidence collection', 'Comparison report'],
+      challenges: ['Keeping audits repeatable across viewport sizes', 'Bringing accessibility, performance, responsive behavior, and technical quality into one comparable system', 'Retaining the evidence behind each finding', 'Turning raw signals into prioritized scores'],
+      gallery: ['UXBench dashboard screenshot', 'Audit report screenshot', 'Comparison view screenshot', 'Evidence capture screenshot'],
+    },
   },
   {
     slug: 'outreachflow', title: 'OutreachFlow', period: 'Sep 2026 — Present', category: 'Full-stack / AI workflow', featured: true,
@@ -40,6 +54,13 @@ export const projects: Project[] = [
       { title: 'Responsible automation', body: 'AI helps create personalized draft messages, but users review communication before it is sent. The goal is useful workflow automation without removing human judgment.' },
       { title: 'What I learned', body: 'Building workflow software requires careful attention to state, integrations, authentication, and the handoff between AI assistance and user control.' },
     ],
+    caseStudy: {
+      problem: 'Outreach work can become fragmented across contacts, drafts, and follow-up context. The project brings those workflows into one application.',
+      built: 'I worked on the product architecture, database workflows, and integrations behind contact management, outreach tracking, and AI-assisted drafting.',
+      architecture: ['User', 'Contact and outreach records', 'AI-assisted draft generation', 'Human review', 'Gmail integration', 'Outreach tracking'],
+      challenges: ['Managing authentication and database-backed records', 'Connecting API-driven drafting with Gmail integration', 'Keeping the handoff between AI assistance and user control explicit', 'Organizing persistent outreach workflow state'],
+      gallery: ['OutreachFlow dashboard screenshot', 'AI draft generation screenshot', 'Contacts view screenshot', 'Outreach tracking screenshot'],
+    },
   },
   {
     slug: 'our-daily-bread', title: 'Our Daily Bread', period: 'Jun 2025 — Early 2026', category: 'Community technology', featured: true,
@@ -53,6 +74,13 @@ export const projects: Project[] = [
       { title: 'Real-world use', body: 'The survey instrument helped the organization conduct and analyze its food survey. Its board reviewed the resulting report, and leadership used the map as an example when communicating a census-district mapping need. University of Delaware students later worked on a demographics survey as a capstone project.' },
       { title: 'Testimonial', body: '“I used your map to show him what I wanted, so it was a valuable tool. I am very pleased with the results of the survey and we could not have done it without your help.” — Marjorie Crofts, Our Daily Bread' },
     ],
+    caseStudy: {
+      problem: 'Our Daily Bread Dining Room of MOT needed clearer, usable information about the people and communities it serves.',
+      built: 'I designed the survey and data-collection system, organized collected information, and created the geographic service map used to support planning and outreach.',
+      architecture: ['Survey design', 'Data collection', 'Organized information', 'Service map', 'Board and leadership use'],
+      challenges: ['Designing a survey and data-collection system that staff could use', 'Organizing information for review', 'Communicating a geographic service need through a clear map'],
+      gallery: ['Our Daily Bread project screenshot', 'Community service map screenshot', 'Survey and data collection tool screenshot'],
+    },
   },
   {
     slug: 'necs-2026', title: 'NECS 2026: The Battle for Nashville', period: 'Sep 2025 — May 2026', category: 'Competition / UX engineering',
@@ -92,6 +120,13 @@ export const projects: Project[] = [
       { title: 'Technical implementation', body: 'It supports PDFs with PDF.js, structured prompts, API-key management, error handling, a floating persistent interface, ARIA roles, and keyboard navigation.' },
       { title: 'What I learned', body: 'The usefulness of an AI feature depends on extraction quality and interface design as much as model output.' },
     ],
+    caseStudy: {
+      problem: 'A useful page summary needs more than sending a webpage directly to a model; it needs careful extraction, filtering, and controls around the resulting prompt.',
+      built: 'I built the extraction pipeline and interface, including DOM text selection, filtering, PDF support, API-key management, accessible controls, and a persistent floating interface.',
+      architecture: ['Visible DOM text', 'Heuristic filtering + text-length controls', 'Structured prompt', 'Gemini API', 'Accessible floating interface'],
+      challenges: ['Identifying useful visible DOM text', 'Supporting PDFs with PDF.js', 'Applying text-length controls before prompting the model', 'Providing API-key management, error handling, ARIA roles, and keyboard navigation'],
+      gallery: ['Extension UI screenshot', 'Settings screenshot', 'PDF summarization screenshot', 'Summarization process screenshot'],
+    },
   },
   {
     slug: 'vex-robotics', title: 'VEX Robotics', period: 'Ongoing', category: 'Robotics / engineering',
@@ -102,6 +137,13 @@ export const projects: Project[] = [
       { title: 'Technical work', body: 'I worked on autonomous routines, drivetrain controls, PID/proportional control, encoder feedback, IMU integration, odometry experimentation, pneumatic controls, motion tuning, debugging, and iteration.' },
       { title: 'Result', body: 'The team qualified for regional competition multiple times and earned the VEX Design Award at the DelMarVa V5 Regional Championship.' },
     ],
+    caseStudy: {
+      problem: 'Competition robotics requires repeatable autonomous behavior and control systems that can be tested, measured, tuned, and improved on the field.',
+      built: 'As lead programmer, I worked on autonomous routines, drivetrain controls, PID/proportional control, encoder feedback, IMU integration, odometry experimentation, motion tuning, debugging, and iteration.',
+      architecture: ['Autonomous routines', 'Encoder + IMU feedback', 'PID and proportional control', 'Motion tuning', 'Field testing and iteration'],
+      challenges: ['Developing autonomous routines', 'Using encoder feedback and IMU integration', 'Tuning PID/proportional control and motion behavior', 'Debugging and iterating from field testing'],
+      gallery: ['Robot photo', 'Autonomous demo', 'Drivetrain system image', 'Competition photo'],
+    },
   },
   {
     slug: 'brew-barn', title: 'The Brew Barn', period: 'Sep 2024 — May 2025', category: 'Competition / UX foundation',

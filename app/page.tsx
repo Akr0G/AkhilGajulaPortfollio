@@ -4,6 +4,7 @@ import { HeroRibbon } from '@/components/HeroRibbon';
 import { Navigation } from '@/components/Navigation';
 import { ProjectCard } from '@/components/ProjectCard';
 import { SectionHeading } from '@/components/SectionHeading';
+import { credentials } from '@/data/credentials';
 import { featuredProjects, projects } from '@/data/projects';
 
 const skills = {
@@ -15,24 +16,85 @@ const skills = {
   'Design & research': ['Framer', 'Figma', 'Responsive design', 'Accessibility', 'UX research'],
 };
 
-const skillIcons = {
-  'AI & APIs': Bot,
-  'Testing & automation': TestTubeDiagonal,
-};
+const skillIcons = { 'AI & APIs': Bot, 'Testing & automation': TestTubeDiagonal };
+const projectGroups = [
+  { label: 'Engineering', slugs: ['ai-website-summarizer', 'vex-robotics'] },
+  { label: 'Human-centered technology', slugs: ['nurses-of-the-future'] },
+  { label: 'Design', slugs: ['necs-2026', 'border-cafe', 'brew-barn'] },
+  { label: 'Research', slugs: ['smart-microbiome-filter'] },
+];
 
 export default function Home() {
+  const completedCredentials = credentials.filter((credential) => credential.visible && credential.status === 'completed');
+  const projectsBySlug = new Map(projects.map((project) => [project.slug, project]));
+
   return <main>
     <Navigation />
-    <section className="hero" id="home"><HeroRibbon /><div className="hero-copy"><img className="profile-photo" src="/akhil-gajula-profile.png" alt="Akhil Gajula" /><p className="eyebrow">Software developer · AI builder · student engineer</p><h1>Akhil<br /><em>Gajula.</em></h1><p className="hero-intro">Building technology that solves real problems—through AI, full-stack development, robotics, and human-centered technology.</p><div className="actions"><a className="button primary" href="#work">View my work <span aria-hidden="true">↓</span></a><a className="button" href="https://github.com/Akr0G" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a><a className="button" href="https://www.linkedin.com/in/akhil-gajula-13-/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div></div><aside className="hero-note"><span className="dot" />Move across the ribbon<br /><strong>to shift the field</strong></aside></section>
-    <section className="statement" aria-label="Approach"><p>Technical depth, grounded in <span>human needs.</span> From automation infrastructure to community tools, I care about systems that are clear, useful, and built to hold up in the real world.</p></section>
-    <section className="section work-section" id="work"><SectionHeading eyebrow="Selected work" title="Software built with a reason behind it." copy="The through-line is practical problem-solving: independent software, technical research, community work, and competition projects." /><div className="project-grid">{featuredProjects.map((project, index) => <ProjectCard key={project.slug} project={project} number={`0${index + 1}`} />)}</div><div className="work-index"><p className="eyebrow">More work</p>{projects.filter((project) => !project.featured).map((project, index) => <Link href={`/work/${project.slug}`} key={project.slug}><span>0{index + 4}</span><strong>{project.title}</strong><small>{project.category}</small><i aria-hidden="true">↗</i></Link>)}</div></section>
-    <section className="section impact-section" id="impact"><SectionHeading eyebrow="Community impact" title="Technology should be useful beyond the screen." /><div className="impact-grid"><article className="impact-feature"><p className="eyebrow">Our Daily Bread Dining Room of MOT</p><h3>Information that helps a nonprofit see its community more clearly.</h3><p>I designed survey, data-collection, and mapping tools to support planning and outreach. The survey report was reviewed by the board, and the map was used by leadership to communicate a census-district mapping need.</p><blockquote>“I used your map to show him what I wanted, so it was a valuable tool. I am very pleased with the results of the survey and we could not have done it without your help.”<cite>Marjorie Crofts · Our Daily Bread</cite></blockquote><a className="text-link" href="https://akr0g.github.io/OurDailyBreadMap/" target="_blank" rel="noreferrer">Open the full map ↗</a></article><article className="recognition"><p className="eyebrow">Community recognition</p><img className="recognition-certificate" src="/nurses-of-the-future-recognition.png" alt="Nurses of the Future Certificate of Appreciation presented to Akhil Gajula" /><h3>Nurses of the Future</h3><p>Recognized for dedication and contributions to the Media/Web Design Team.</p><span>Certificate of Appreciation · July 2025</span></article></div><div className="map-frame"><div className="map-frame-heading"><div><p className="eyebrow">Interactive community map</p><h3>Our Daily Bread service map</h3></div><a href="https://akr0g.github.io/OurDailyBreadMap/" target="_blank" rel="noreferrer">Open in a new tab ↗</a></div><iframe title="Our Daily Bread community service map" src="https://akr0g.github.io/OurDailyBreadMap/" loading="lazy" /></div></section>
-    <section className="section about-section" id="about"><SectionHeading eyebrow="About" title="A design foundation. A more technical direction." /><div className="about-layout"><div><p className="large-copy">I started in web development and UX competitions. Over time, I became more interested in what happens behind the interface: the systems, data, logic, testing, and engineering decisions that make a product genuinely useful.</p><p>Today, my work spans AI applications, full-stack software, testing and automation, robotics, accessibility, and community technology. UX remains part of how I build—but it is no longer the whole story.</p></div><dl className="profile-list"><div><dt>Based in</dt><dd>Middletown, Delaware</dd></div><div><dt>Education</dt><dd>MOT Charter High School<br />Class of 2027</dd></div><div><dt>Academic interests</dt><dd>Computer Science · AI<br />Engineering · Mathematics</dd></div><div><dt>Languages</dt><dd>English · Telugu · Spanish</dd></div></dl></div></section>
-    <section className="section leadership"><SectionHeading eyebrow="Leadership & activities" title="Building alongside other people." /><div className="leadership-grid"><article><span>01</span><h3>Business Professionals of America</h3><p className="role">Chapter President</p><p>Lead a chapter of <strong>150+ members</strong>, organize meetings and competition preparation, and support members heading to state and national events. Helped increase State Leadership Conference participation from about 20 to 50+ competitors.</p></article><article><span>02</span><h3>VEX Robotics · Team 19709A</h3><p className="role">Lead Programmer</p><p>Contribute technical leadership across autonomous programming, control systems, debugging, testing, and iteration.</p></article><article><span>03</span><h3>National Honor Society</h3><p className="role">Secretary</p><p>Support organizational and student leadership responsibilities, with an interest in improving systems such as volunteer-hour tracking.</p></article><article><span>04</span><h3>Student Government</h3><p className="role">11th Grade Senator</p><p>Represent student perspectives and contribute to class and school initiatives.</p></article></div></section>
-    <section className="section awards-section" id="awards"><SectionHeading eyebrow="Awards & recognition" title="A record of research, iteration, and competition." /><div className="awards-layout"><div className="award-timeline"><p className="eyebrow">High school</p><div><time>2026</time><p><strong>4th Place</strong> · BPA National Leadership Conference, User Experience Design Team<br /><strong>1st Place</strong> · Delaware BPA State Leadership Conference, User Experience Design Team</p></div><div><time>2025</time><p><strong>7th Place / National Finalist</strong> · BPA National Leadership Conference, User Experience Design Team<br /><strong>1st Place</strong> · Delaware BPA State Leadership Conference, User Experience Design Team</p></div><div><time>2024</time><p><strong>3rd Place</strong> · Delaware BPA State Leadership Conference, Website Design Team</p></div></div><aside className="award-aside"><p className="eyebrow">Additional recognition</p><ul><li>3rd Place Overall · Smart Microbiome Filter, 2026</li><li>VEX Robotics Design Award</li><li>VEX Robotics Regional Qualifier</li></ul><div><span>2023 · Before high school</span><p><strong>1st Place Nationally</strong><br />BPA Website Design Team, Middle Level</p></div></aside></div></section>
-    <section className="section certifications-section" id="credentials"><SectionHeading eyebrow="Certifications & credentials" title="Learning with evidence behind it." copy="Current credentials are listed with their verified status; any unprovided details remain intentionally unfilled." /><div className="certification-grid"><article className="certificate-card"><div className="certificate-card-head"><span className="status completed">Completed</span><span>01</span></div><h3>Foundations of Project Management</h3><p className="issuer">Google / Coursera</p><p>Course certificate in the Google Project Management curriculum.</p><dl><div><dt>Date earned</dt><dd>September 2026</dd></div><div><dt>Credential ID</dt><dd>Not provided</dd></div><div><dt>Verification</dt><dd>Not provided</dd></div></dl></article><article className="certificate-card"><div className="certificate-card-head"><span className="status progress">In progress</span><span>02</span></div><h3>Onshape Certification</h3><p className="issuer">Onshape</p><p>Credential status is in progress; completion details will be added when earned.</p><dl><div><dt>Date earned</dt><dd>Not yet earned</dd></div><div><dt>Credential ID</dt><dd>Not provided</dd></div><div><dt>Verification</dt><dd>Not provided</dd></div></dl></article></div></section>
-    <section className="section skills-section"><SectionHeading eyebrow="Technical toolkit" title="Tools I use to make ideas testable, usable, and real." /><div className="skills-grid">{Object.entries(skills).map(([name, items]) => { const SkillIcon = skillIcons[name as keyof typeof skillIcons]; return <article key={name}><h3>{SkillIcon && <SkillIcon className="skill-heading-icon" aria-hidden="true" strokeWidth={2.4} />}{name}</h3><p>{items.join(' · ')}</p></article>; })}</div></section>
-    <section className="contact" id="contact"><p className="eyebrow">Contact</p><h2>Let’s build something <em>useful.</em></h2><p>I’m interested in opportunities to learn, build, and contribute to work with real-world impact.</p><div className="contact-links"><a href="mailto:akhilgajula@gmail.com">Email <span>↗</span></a><a href="https://github.com/Akr0G" target="_blank" rel="noreferrer">GitHub <span>↗</span></a><a href="https://www.linkedin.com/in/akhil-gajula-13-/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a></div></section>
+    <section className="hero" id="home">
+      <HeroRibbon />
+      <div className="hero-copy">
+        <img className="profile-photo" src="/akhil-gajula-profile.png" alt="Akhil Gajula" />
+        <p className="eyebrow">Software developer · AI builder · student engineer</p>
+        <h1>Akhil <em>Gajula.</em></h1>
+        <p className="hero-intro">Software developer building AI and full-stack technology for real-world problems.</p>
+        <p className="hero-supporting">I build automated testing systems, AI-powered applications, robotics software, and technology for community organizations.</p>
+        <div className="actions">
+          <a className="button primary" href="#work">View projects <span aria-hidden="true">↓</span></a>
+          <a className="button" href="/akhil-gajula-resume.pdf">Resume <span aria-hidden="true">↗</span></a>
+          <a className="button" href="https://github.com/Akr0G" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <p className="credibility">BPA National Finalist <span aria-hidden="true">·</span> VEX Lead Programmer <span aria-hidden="true">·</span> Community Technology</p>
+      </div>
+    </section>
+
+    <section className="section work-section" id="work">
+      <SectionHeading eyebrow="Featured projects" title="Engineering work with evidence behind it." copy="Three projects that best show how I translate a real problem into a technical system." />
+      <div className="featured-project-grid">{featuredProjects.map((project, index) => <ProjectCard key={project.slug} project={project} number={String(index + 1).padStart(2, '0')} />)}</div>
+    </section>
+
+    <section className="section impact-section" aria-labelledby="impact-heading">
+      <div className="impact-layout">
+        <div>
+          <p className="eyebrow">Technical and community impact</p>
+          <h2 id="impact-heading">Technology is most useful when people can act on it.</h2>
+          <p>I build software with the same goal across independent projects, robotics, and community work: make complex work clearer, more testable, and more useful.</p>
+        </div>
+        <blockquote className="impact-quote">“I used your map to show him what I wanted, so it was a valuable tool. I am very pleased with the results of the survey and we could not have done it without your help.”<cite>Marjorie Crofts · Our Daily Bread</cite><a className="text-link" href="https://akr0g.github.io/OurDailyBreadMap/" target="_blank" rel="noreferrer">Open the community map <span aria-hidden="true">↗</span></a></blockquote>
+      </div>
+    </section>
+
+    <section className="section more-work-section">
+      <SectionHeading eyebrow="More work" title="A broader record of building and iteration." copy="Selected work across software, design, robotics, and research." />
+      <div className="project-groups">{projectGroups.map((group) => <section key={group.label} className="project-group"><h3>{group.label}</h3><div className="compact-project-grid">{group.slugs.map((slug, index) => { const project = projectsBySlug.get(slug); return project ? <ProjectCard key={slug} project={project} number={String(index + 1).padStart(2, '0')} compact /> : null; })}</div></section>)}</div>
+    </section>
+
+    <section className="section leadership" id="experience">
+      <SectionHeading eyebrow="Experience and leadership" title="Building alongside other people." />
+      <div className="leadership-grid">
+        <article><span>01</span><h3>Business Professionals of America</h3><p className="role">Chapter President</p><ul><li>Lead a chapter of 150+ members.</li><li>Helped increase State Leadership Conference participation from about 20 to 50+ competitors.</li></ul></article>
+        <article><span>02</span><h3>VEX Robotics · Team 19709A</h3><p className="role">Lead Programmer</p><ul><li>Contribute technical leadership across autonomous programming, controls, debugging, and iteration.</li></ul></article>
+        <article><span>03</span><h3>National Honor Society</h3><p className="role">Secretary</p><ul><li>Support organizational and student leadership responsibilities.</li></ul></article>
+        <article><span>04</span><h3>Student Government</h3><p className="role">11th Grade Senator</p><ul><li>Represent student perspectives and contribute to class and school initiatives.</li></ul></article>
+      </div>
+    </section>
+
+    <section className="section awards-section" id="awards">
+      <SectionHeading eyebrow="Awards" title="Recognition for research, iteration, and competition." />
+      <div className="awards-layout">
+        <div className="award-timeline"><p className="eyebrow">BPA competition</p><div><time>2026</time><p><strong>4th Place</strong> · BPA National Leadership Conference, User Experience Design Team<br /><strong>1st Place</strong> · Delaware BPA State Leadership Conference, User Experience Design Team</p></div><div><time>2025</time><p><strong>7th Place / National Finalist</strong> · BPA National Leadership Conference, User Experience Design Team<br /><strong>1st Place</strong> · Delaware BPA State Leadership Conference, User Experience Design Team</p></div><div><time>2024</time><p><strong>3rd Place</strong> · Delaware BPA State Leadership Conference, Website Design Team</p></div></div>
+        <aside className="award-aside"><p className="eyebrow">Robotics and research</p><ul><li>VEX Robotics Design Award</li><li>VEX Robotics Regional Qualifier</li><li>3rd Place Overall · Smart Microbiome Filter, 2026</li></ul><div><span>2023 · Before high school</span><p><strong>1st Place Nationally</strong><br />BPA Website Design Team, Middle Level</p></div></aside>
+      </div>
+    </section>
+
+    <section className="section about-section" id="about">
+      <SectionHeading eyebrow="About" title="A design foundation. A more technical direction." />
+      <div className="about-layout"><div><p className="large-copy">I started in web development and UX competitions. Over time, I became more interested in the systems, data, logic, testing, and engineering decisions that make a product genuinely useful.</p><p>Today, my work spans AI applications, full-stack software, testing and automation, robotics, accessibility, and community technology.</p></div><dl className="profile-list"><div><dt>Based in</dt><dd>Middletown, Delaware</dd></div><div><dt>Education</dt><dd>MOT Charter High School<br />Class of 2027</dd></div><div><dt>Academic interests</dt><dd>Computer Science · AI<br />Engineering · Mathematics</dd></div><div><dt>Languages</dt><dd>English · Telugu · Spanish</dd></div></dl></div>
+      <div className="skills-grid">{Object.entries(skills).map(([name, items]) => { const SkillIcon = skillIcons[name as keyof typeof skillIcons]; return <article key={name}><h3>{SkillIcon && <SkillIcon className="skill-heading-icon" aria-hidden="true" strokeWidth={2.4} />}{name}</h3><p>{items.join(' · ')}</p></article>; })}</div>
+    </section>
+
+    {completedCredentials.length > 0 && <section className="section certifications-section" id="credentials"><SectionHeading eyebrow="Certification" title="Learning with evidence behind it." /><div className="certification-grid">{completedCredentials.map((credential) => <article className="certificate-card" key={credential.name}><p className="eyebrow">Completed</p><h3>{credential.name}</h3><p className="issuer">{credential.issuer}</p>{credential.dateEarned && <p>{credential.dateEarned}</p>}</article>)}</div></section>}
+
+    <section className="contact" id="contact"><p className="eyebrow">Contact</p><h2>Let’s build something <em>useful.</em></h2><p>I’m interested in opportunities to learn, build, and contribute to work with real-world impact.</p><div className="contact-links"><a href="mailto:akhilgajula@gmail.com">Email <span aria-hidden="true">↗</span></a><a href="https://github.com/Akr0G" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/akhil-gajula-13-/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div></section>
     <footer><span>© {new Date().getFullYear()} Akhil Gajula</span><a href="#home">Back to top ↑</a></footer>
   </main>;
 }
