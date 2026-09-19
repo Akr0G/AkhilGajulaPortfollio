@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Bot, TestTubeDiagonal } from 'lucide-react';
+import { Bot, Braces, Brush, Languages, Orbit, TestTubeDiagonal } from 'lucide-react';
 import { HeroRibbon } from '@/components/HeroRibbon';
 import { Navigation } from '@/components/Navigation';
 import { ProjectCard } from '@/components/ProjectCard';
@@ -16,7 +16,14 @@ const skills = {
   'Design & research': ['Framer', 'Figma', 'Responsive design', 'Accessibility', 'UX research'],
 };
 
-const skillIcons = { 'AI & APIs': Bot, 'Testing & automation': TestTubeDiagonal };
+const skillIcons = {
+  Languages,
+  'Frontend & full stack': Braces,
+  'AI & APIs': Bot,
+  'Testing & automation': TestTubeDiagonal,
+  Robotics: Orbit,
+  'Design & research': Brush,
+};
 const projectGroups = [
   { label: 'Engineering', slugs: ['ai-website-summarizer', 'vex-robotics'] },
   { label: 'Human-centered technology', slugs: ['nurses-of-the-future'] },
@@ -28,12 +35,14 @@ export default function Home() {
   const completedCredentials = credentials.filter((credential) => credential.visible && credential.status === 'completed');
   const projectsBySlug = new Map(projects.map((project) => [project.slug, project]));
 
-  return <main>
+  return <>
+    <a className="skip-link" href="#main-content">Skip to main content</a>
+    <main id="main-content" tabIndex={-1}>
     <Navigation />
     <section className="hero" id="home">
       <HeroRibbon />
       <div className="hero-copy">
-        <img className="profile-photo" src="/akhil-gajula-profile.png" alt="Akhil Gajula" />
+        <img className="profile-photo" src="/akhil-gajula-profile.png" alt="Akhil Gajula" width={78} height={78} fetchPriority="high" />
         <p className="eyebrow">Software developer · AI builder · student engineer</p>
         <h1>Akhil <em>Gajula.</em></h1>
         <p className="hero-intro">Software developer building AI and full-stack technology for real-world problems.</p>
@@ -41,7 +50,7 @@ export default function Home() {
         <div className="actions">
           <a className="button primary" href="#work">View projects <span aria-hidden="true">↓</span></a>
           <a className="button" href="/akhil-gajula-resume.pdf">Resume <span aria-hidden="true">↗</span></a>
-          <a className="button" href="https://github.com/Akr0G" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          <a className="button" href="https://github.com/Akr0G" target="_blank" rel="noreferrer" aria-label="GitHub profile (opens in a new tab)">GitHub <span aria-hidden="true">↗</span></a>
         </div>
         <p className="credibility">BPA National Finalist <span aria-hidden="true">·</span> VEX Lead Programmer <span aria-hidden="true">·</span> Community Technology</p>
       </div>
@@ -59,7 +68,7 @@ export default function Home() {
           <h2 id="impact-heading">Technology is most useful when people can act on it.</h2>
           <p>I build software with the same goal across independent projects, robotics, and community work: make complex work clearer, more testable, and more useful.</p>
         </div>
-        <blockquote className="impact-quote">“I used your map to show him what I wanted, so it was a valuable tool. I am very pleased with the results of the survey and we could not have done it without your help.”<cite>Marjorie Crofts · Our Daily Bread</cite><a className="text-link" href="https://akr0g.github.io/OurDailyBreadMap/" target="_blank" rel="noreferrer">Open the community map <span aria-hidden="true">↗</span></a></blockquote>
+        <blockquote className="impact-quote">“I used your map to show him what I wanted, so it was a valuable tool. I am very pleased with the results of the survey and we could not have done it without your help.”<cite>Marjorie Crofts · Our Daily Bread</cite><a className="text-link" href="https://akr0g.github.io/OurDailyBreadMap/" target="_blank" rel="noreferrer" aria-label="Open the Our Daily Bread community map (opens in a new tab)">Open the community map <span aria-hidden="true">↗</span></a></blockquote>
       </div>
     </section>
 
@@ -94,7 +103,8 @@ export default function Home() {
 
     {completedCredentials.length > 0 && <section className="section certifications-section" id="credentials"><SectionHeading eyebrow="Certification" title="Learning with evidence behind it." /><div className="certification-grid">{completedCredentials.map((credential) => <article className="certificate-card" key={credential.name}><p className="eyebrow">Completed</p><h3>{credential.name}</h3><p className="issuer">{credential.issuer}</p>{credential.dateEarned && <p>{credential.dateEarned}</p>}</article>)}</div></section>}
 
-    <section className="contact" id="contact"><p className="eyebrow">Contact</p><h2>Let’s build something <em>useful.</em></h2><p>I’m interested in opportunities to learn, build, and contribute to work with real-world impact.</p><div className="contact-links"><a href="mailto:akhilgajula@gmail.com">Email <span aria-hidden="true">↗</span></a><a href="https://github.com/Akr0G" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/akhil-gajula-13-/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div></section>
+    <section className="contact" id="contact"><p className="eyebrow">Contact</p><h2>Let’s build something <em>useful.</em></h2><p>I’m interested in opportunities to learn, build, and contribute to work with real-world impact.</p><div className="contact-links"><a href="mailto:akhilgajula@gmail.com">Email <span aria-hidden="true">↗</span></a><a href="https://github.com/Akr0G" target="_blank" rel="noreferrer" aria-label="GitHub profile (opens in a new tab)">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/akhil-gajula-13-/" target="_blank" rel="noreferrer" aria-label="LinkedIn profile (opens in a new tab)">LinkedIn <span aria-hidden="true">↗</span></a></div></section>
     <footer><span>© {new Date().getFullYear()} Akhil Gajula</span><a href="#home">Back to top ↑</a></footer>
-  </main>;
+    </main>
+  </>;
 }

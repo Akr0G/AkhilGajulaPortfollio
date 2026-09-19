@@ -27,8 +27,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <p className="case-lede">{project.summary}</p>
         <div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
         <div className="actions">
-          {project.liveUrl && <a className="button primary" href={project.liveUrl} target="_blank" rel="noreferrer">Live demo <span aria-hidden="true">↗</span></a>}
-          {project.github && <a className="button" href={project.github} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>}
+          {project.liveUrl && <a className="button primary" href={project.liveUrl} target="_blank" rel="noreferrer" aria-label={`${project.liveLabel ?? project.title} live demo (opens in a new tab)`}>Live demo <span aria-hidden="true">↗</span></a>}
+          {project.github && <a className="button" href={project.github} target="_blank" rel="noreferrer" aria-label={`${project.title} GitHub repository (opens in a new tab)`}>GitHub <span aria-hidden="true">↗</span></a>}
           <Link className="button" href="/#work">Back to work</Link>
         </div>
         <ProjectImagePlaceholder label={`${project.title} hero screenshot`} />
